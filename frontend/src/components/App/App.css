@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
-}
+@layer base {
+  /* Base styles */
+  html, body, #root, .App {
+    @apply h-full;
+  }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  body {
+    @apply bg-gray-800 m-0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@layer components {
+  .App {
+    @apply flex flex-col h-full;
+  }
+
+  #response-list {
+    @apply flex-1 overflow-y-auto border-none px-4;
+  }
+
+  .chatgpt-response {
+    @apply bg-gray-800;
+  }
+
+  .my-question {
+    @apply bg-gray-900;
+  }
+
+  #input-container {
+    @apply flex items-center justify-between p-3 bg-gray-700 
+           rounded-lg mx-auto max-w-3xl w-full my-4 
+           border border-gray-600/50 shadow-lg;
+  }
+
+  #submit-button {
+    @apply w-10 h-10 rounded-lg bg-transparent cursor-pointer 
+           hover:bg-gray-600 transition-colors duration-200 
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center;
+  }
+
+  #submit-button::before {
+    content: '';
+    @apply w-6 h-6;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='white' d='M2.01 21L23 12 2.01 3 2 10l15 2-15 2z'/></svg>");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #regenerate-button-container {
+    @apply flex justify-center mb-4;
+  }
+
+  #regenerate-response-button {
+    @apply bg-emerald-600 text-white px-4 py-2 rounded-lg
+           hover:bg-emerald-700 transition-colors duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .loading {
+    @apply opacity-50 cursor-not-allowed pointer-events-none;
+  }
+
+  #model-select-container {
+    @apply mx-auto max-w-3xl w-full text-white px-4 my-3;
+  }
+
+  #model-select-container select {
+    @apply bg-transparent border-none outline-none text-white 
+           cursor-pointer hover:bg-gray-700 rounded-lg px-2 py-1;
+  }
+
+  #model-select-container select option:not(:checked) {
+    @apply bg-gray-800/80;
+  }
+
+  #model-select-container select option {
+    @apply bg-gray-800/50;
+  }
+
+  /* Message container styles */
+  .message-container {
+    @apply max-w-3xl mx-auto w-full p-4 rounded-lg mb-4
+           transition-colors duration-200;
+  }
+
+  /* Code block styles */
+  pre {
+    @apply bg-gray-900 rounded-lg p-4 overflow-x-auto;
+  }
+
+  code {
+    @apply text-sm font-mono;
+  }
+
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full hover:bg-gray-500;
+  }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* Custom animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
 }
