@@ -77,4 +77,8 @@ app.post("/get-prompt-result", validateApiKey, async (req, res) => {
 });
 
 const port = process.env.PORT || 5000;
+<<<<<<< HEAD
 app.listen(port, () => console.log(`Server running on port ${port}`));
+=======
+app.listen(port, () => console.log(`Server running on port ${port}`));
+>>>>>>> 901dbbecb6e558ee9c9b8882b7a5464130995772
