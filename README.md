@@ -2,7 +2,7 @@
 
 A modern web application that provides intelligent medical information assistance through a conversational interface. The application is built with security, reliability, and user experience in mind.
 
-![MediSearch Interface](./client/public/MediSearch.png)
+![MediSearch Interface](./frontend/public/MediSearch.png)
 
 ## TEAM MEMBERS
 - Luswata Andrew
